@@ -1,0 +1,9 @@
+wandb
+h5py
+xgboost
+scikit-learn
+ujson
+scipy
+
+torchtext==0.15.2
+portalocker==2.1.0
