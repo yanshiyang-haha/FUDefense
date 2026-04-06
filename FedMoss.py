@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import copy
 import torch
 import argparse
@@ -20,7 +21,6 @@ from recover_jy_zx import recover_jy_zx
 from crab_jy import crab_jy
 from crab_jy_Trust import crab_jy_Trust
 from crab_jy_zx import crab_jy_zx
-from MS_crab_new import MS_crab_new
 
 from trainmodel.models import *
 
@@ -252,33 +252,11 @@ def run(args):
             server.adaptive_recover()
             # server.retrain()
 
-        elif args.algorithm == "crab_jy_Trust":
-            args.head = copy.deepcopy(args.model.fc)
-            args.model.fc = nn.Identity()
-            args.model = BaseHeadSplit(args.model, args.head)
-            server = crab_jy_Trust(args, i)
-
-            server.select_unlearned_clients()
-            server.train_with_select()
-            server.adaptive_recover()
-            # server.retrain()
-
         elif args.algorithm == "crab_jy_zx":
             args.head = copy.deepcopy(args.model.fc)
             args.model.fc = nn.Identity()
             args.model = BaseHeadSplit(args.model, args.head)
             server = crab_jy_zx(args, i)
-
-            server.select_unlearned_clients()
-            server.train_with_select()
-            server.adaptive_recover()
-            # server.retrain()
-
-        elif args.algorithm == "MS_crab_new":
-            args.head = copy.deepcopy(args.model.fc)
-            args.model.fc = nn.Identity()
-            args.model = BaseHeadSplit(args.model, args.head)
-            server = MS_crab_new(args, i)
 
             server.select_unlearned_clients()
             server.train_with_select()
@@ -334,8 +312,7 @@ if __name__ == "__main__":
     # unlearning settings
     parser.add_argument('-algo', "--algorithm", type=str, default="FedEraser",
                         choices=["Retrain", "FedEraser", "FedRecover", "Crab", "eraser_jy", "recover_jy", "crab_jy",
-                                 "eraser_jy_zx", "recover_jy_zx", "crab_jy_zx"
-                            , "crab_jy_Trust", "eraser_jy_Trust", "recover_jy_zx", "MS_crab_new"],
+                                 "eraser_jy_zx", "crab_jy_zx", "recover_jy_zx"],
                         help="How to unlearn the target clients")
     parser.add_argument('-verify', "--verify_unlearn", action='store_true',
                         help="Whether use the MIA to verify the unlearn effectiveness")
