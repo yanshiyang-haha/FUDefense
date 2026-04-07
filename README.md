@@ -42,7 +42,7 @@ python generate_mnist.py iid balance -
 python generate_mnist.py noniid - dir
 ```
 
-Note: The split file mode is 'add'. Please delete existing folders in data/dataset_name/train or test if you wish to re-split the dataset.
+Note: The split file mode is "add". Please delete existing folders in data/dataset_name/train or test if you wish to re-split the dataset.
 
 ## 3. Framework Architecture
 
