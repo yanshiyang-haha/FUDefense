@@ -66,13 +66,13 @@ To facilitate ablation studies and comparative analysis, the repository is divid
 
 We evaluate the framework against Byzantine adversaries with malicious client fractions ranging from 10% to 50%.
 
-· Backdoor Attacks: 4×4 white-pixel triggers with configurable label injection (Fix, Random, Exclusive).
+· Backdoor Attacks: 
 
-· Gradient Poisoning:
+- 4×4 white-pixel triggers with configurable label injection (Fix, Random, Exclusive).
+- 
+- LIE (Little Is Enough): Noise scaling at 0.8.
 
-    · LIE (Little Is Enough): Noise scaling at 0.8.
-
-    · SF (Sign Flipping): Gradient sign inversion.
+- SF (Sign Flipping): Gradient sign inversion.
 
 · Pruning Attacks: Gaussian noise injection or 10% parameter corruption.
 
