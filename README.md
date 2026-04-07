@@ -108,7 +108,7 @@ Example 1: Standard Crab Recovery
 FedMoss.py -data fmnist -verify -algo Crab -unlearn 10
 ```
 
-Example 2: Crab Recovery under Backdoor and LIE Attack
+Example 2: Crab Recovery under Backdoor Attack
 
 ```python
 FedMoss.py -verify -algo Crab -data fmnist -unlearn 5 -backdoor -clamp -gr 20 -robust Krum
