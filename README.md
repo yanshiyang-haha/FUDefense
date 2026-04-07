@@ -106,8 +106,8 @@ python FedMoss.py -data fmnist -verify -algo Crab -unlearn 10
 
 Example 2: Crab Recovery under Backdoor and LIE Attack
 
-'''
-python FedMoss.py -verify -algo Crab -data fmnist -unlearn 5 -backdoor -clamp -gr 20 -robust Krum
-'''
+```python
+FedMoss.py -verify -algo Crab -data fmnist -unlearn 5 -backdoor -clamp -gr 20 -robust Krum
+```
 
 For rapid simulations, refer to the provided run.sh script for pre-configured command-line samples. Detailed parameter descriptions are available within the source code of FedMoss.py.
