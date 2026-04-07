@@ -69,7 +69,7 @@ We evaluate the framework against Byzantine adversaries with malicious client fr
 · Backdoor Attacks: 
 
 - 4×4 white-pixel triggers with configurable label injection (Fix, Random, Exclusive).
-- 
+
 - LIE (Little Is Enough): Noise scaling at 0.8.
 
 - SF (Sign Flipping): Gradient sign inversion.
@@ -106,7 +106,8 @@ python FedMoss.py -data fmnist -verify -algo Crab -unlearn 10
 
 Example 2: Crab Recovery under Backdoor and LIE Attack
 
-Bash
+'''
 python FedMoss.py -verify -algo Crab -data fmnist -unlearn 5 -backdoor -clamp -gr 20 -robust Krum
+'''
 
 For rapid simulations, refer to the provided run.sh script for pre-configured command-line samples. Detailed parameter descriptions are available within the source code of FedMoss.py.
