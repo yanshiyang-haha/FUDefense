@@ -18,9 +18,11 @@ GPU: Single NVIDIA RTX 4090 (24 GB VRAM) | CPU: 16-core Intel Xeon Platinum 8352
 
 ### Install Dependencies
 
+```python
 pip install torch==2.0.0 torchvision --index-url https://download.pytorch.org/whl/cu118
 
 pip install -r requirements.txt
+```
 
 ## 2.Experimental Configuration
 
@@ -32,13 +34,15 @@ Local Training: 5 local epochs per client per round | Optimizer: SGD (without mo
 
 Supported datasets include MNIST, Fashion-MNIST, and CIFAR-10/100. Use the following scripts to partition data:
 
-IID and Balanced scenario
+```python
+# IID and Balanced scenario
 
 python generate_mnist.py iid balance -
 
-Practical Non-IID (Dirichlet) scenario
+# Practical Non-IID (Dirichlet) scenario
 
 python generate_mnist.py noniid - dir
+```
 
 Note: The split file mode is 'add'. Please delete existing folders in data/dataset_name/train or test if you wish to re-split the dataset.
 
@@ -46,15 +50,15 @@ Note: The split file mode is 'add'. Please delete existing folders in data/datas
 
 FUDefense consists of two primary modules:
 
-### Hypothesis Testing (HT): 
+- Hypothesis Testing (HT): 
 
 Hypothesis Testing (HT): A statistical module based on the Log-Normal distribution that calculates relative deviations to filter out anomalous client updates.
 
-### Reinforcement Learning (RL): 
+- Reinforcement Learning (RL): 
 
 An offline Q-Learning agent that dynamically selects the optimal client subset based on historical performance (Accuracy/Loss) to accelerate model recovery.
 
-Workspace Structure
+### Workspace Structure
 
 To facilitate ablation studies and comparative analysis, the repository is divided into two workspaces:
 
@@ -66,35 +70,35 @@ To facilitate ablation studies and comparative analysis, the repository is divid
 
 We evaluate the framework against Byzantine adversaries with malicious client fractions ranging from 10% to 50%.
 
-· Backdoor Attacks: 
+- Backdoor Attacks: 
 
-- 4×4 white-pixel triggers with configurable label injection (Fix, Random, Exclusive).
+    - 4×4 white-pixel triggers with configurable label injection (Fix, Random, Exclusive).
 
-- LIE (Little Is Enough): Noise scaling at 0.8.
+    - LIE (Little Is Enough): Noise scaling at 0.8.
 
-- SF (Sign Flipping): Gradient sign inversion.
+    - SF (Sign Flipping): Gradient sign inversion.
 
-· Pruning Attacks: Gaussian noise injection or 10% parameter corruption.
+- Pruning Attacks: Gaussian noise injection or 10% parameter corruption.
 
 ## 5.Unlearning Parameters & Metrics
 
-Unlearning Setup
+### Unlearning Setup
 
-· Time Window Generation Ratio ($\alpha$): 0.1
+- Time Window Generation Ratio ($\alpha$): 0.1
 
-· Buffer Window Ratio ($\lambda$): 0.8
+- Buffer Window Ratio ($\lambda$): 0.8
 
-· Client Participation Ratio ($\delta$): 0.8
+- Client Participation Ratio ($\delta$): 0.8
 
-· Adaptive Rollback Threshold ($\beta$): 0.3
+- Adaptive Rollback Threshold ($\beta$): 0.3
 
-Evaluation Metrics
+### Evaluation Metrics
 
-· Accuracy: Overall prediction correctness.
+- Accuracy: Overall prediction correctness.
 
-· Precision / Recall / F1-Score: Used to determine class-specific performance and unlearning effectiveness.
+- Precision / Recall / F1-Score: Used to determine class-specific performance and unlearning effectiveness.
 
-· Training Time: Measures computational efficiency and recovery speed.
+- Training Time: Measures computational efficiency and recovery speed.
 
 ## 6.Execution Guide
 
@@ -102,7 +106,9 @@ Use FedMoss.py to start the end-to-end simulation.
 
 Example 1: Standard Crab Recovery
 
-python FedMoss.py -data fmnist -verify -algo Crab -unlearn 10
+```python
+FedMoss.py -data fmnist -verify -algo Crab -unlearn 10
+```
 
 Example 2: Crab Recovery under Backdoor and LIE Attack
 
