@@ -4,7 +4,7 @@ FUDefense is a lightweight, plug-and-play framework designed to enhance the robu
 
 This repository supports the integration of FUDefense with several baseline unlearning algorithms and provides a comprehensive suite for comparison against state-of-the-art online federated defense mechanisms.
 
-## 1.Environment Setup
+## 1. Environment Setup
 
 All experiments were conducted on a remote AutoDL Compute Cloud server. The environment specifications are as follows:
 
@@ -19,12 +19,10 @@ GPU: Single NVIDIA RTX 4090 (24 GB VRAM) | CPU: 16-core Intel Xeon Platinum 8352
 ### Install Dependencies
 
 ```python
-pip install torch==2.0.0 torchvision --index-url https://download.pytorch.org/whl/cu118
-
 pip install -r requirements.txt
 ```
 
-## 2.Experimental Configuration
+## 2. Experimental Configuration
 
 ### Training Hyperparameters
 
@@ -46,7 +44,7 @@ python generate_mnist.py noniid - dir
 
 Note: The split file mode is 'add'. Please delete existing folders in data/dataset_name/train or test if you wish to re-split the dataset.
 
-## 3.Framework Architecture
+## 3. Framework Architecture
 
 FUDefense consists of two primary modules:
 
@@ -66,13 +64,13 @@ To facilitate ablation studies and comparative analysis, the repository is divid
 
 2. Online Defense Workspace (*_jy_zx.py): Includes crab_jy_zx.py, etc. Used to benchmark against online defense algorithms (SCC, FedRo, Viceroy).
 
-## 4.Robustness & Attack Vectors
+## 4. Robustness & Attack Vectors
 
 We evaluate the framework against Byzantine adversaries with malicious client fractions ranging from 10% to 50%.
 
 - Backdoor Attacks: 
 
-    - 4×4 white-pixel triggers with configurable label injection (Fix, Random, Exclusive).
+    - 4×4 white-pixel triggers with configurable label injection.
 
     - LIE (Little Is Enough): Noise scaling at 0.8.
 
@@ -80,7 +78,7 @@ We evaluate the framework against Byzantine adversaries with malicious client fr
 
 - Pruning Attacks: Gaussian noise injection or 10% parameter corruption.
 
-## 5.Unlearning Parameters & Metrics
+## 5. Unlearning Parameters & Metrics
 
 ### Unlearning Setup
 
@@ -100,7 +98,7 @@ We evaluate the framework against Byzantine adversaries with malicious client fr
 
 - Training Time: Measures computational efficiency and recovery speed.
 
-## 6.Execution Guide
+## 6. Execution Guide
 
 Use FedMoss.py to start the end-to-end simulation.
 
